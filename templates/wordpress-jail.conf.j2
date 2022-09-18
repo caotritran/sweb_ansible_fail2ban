@@ -4,9 +4,9 @@ filter = wordpress
 action = cloudflare
 port = http,https
 logpath = /var/log/nginx/domains/*.log
-findtime = 100
+findtime = 300
 bantime = 3600
-maxretry = 3
+maxretry = 150
 
 [wordpress-iptables]
 enabled  = true
@@ -14,5 +14,5 @@ filter   = wordpress
 action   = iptables-multiport[name=NoAuthFailures, port="http,https"]
 logpath  = /var/log/nginx/domains/*.log
 banTime  = 3600
-findtime = 100
-maxRetry = 3
+findtime = 300
+maxRetry = 150
