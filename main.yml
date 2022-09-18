@@ -1,0 +1,31 @@
+- name: install fail2ban
+  hosts: all
+  become: yes
+  become_method: sudo
+
+  tasks:
+    - name: install fail2ban
+      yum:
+        name: fail2ban
+        state: present
+    - name: copy template action
+      template:
+        src: cloudflare.conf.j2
+        dest: /etc/fail2ban/action.d/cloudflare.conf
+        backup: yes
+    - name: copy template filter
+      template:
+        src: wordpress-filter.conf.j2
+        dest: /etc/fail2ban/filter.d/wordpress.conf
+        backup: yes
+    - name: copy template jail
+      template:
+        src: wordpress-filter.conf.j2
+        dest: /etc/fail2ban/jail.d/wordpress.conf
+        backup: yes
+    - name: start and enable fail2ban
+      systemd:
+        name: fail2ban
+        state: started
+        enabled: yes
+      
