@@ -20,7 +20,7 @@
         backup: yes
     - name: copy template jail
       template:
-        src: wordpress-filter.conf.j2
+        src: wordpress-jail.conf.j2
         dest: /etc/fail2ban/jail.d/wordpress.conf
         backup: yes
     - name: start and enable fail2ban
