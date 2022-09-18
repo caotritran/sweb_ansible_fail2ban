@@ -1,0 +1,18 @@
+[wordpress-CF]
+enabled = true
+filter = wordpress
+action = cloudflare
+port = http,https
+logpath = /var/log/nginx/domains/*
+findtime = 50
+bantime = 3600
+maxretry = 3
+
+[wordpress-iptables]
+enabled  = true
+filter   = wordpress
+action   = iptables-multiport[name=NoAuthFailures, port="http,https"]
+logpath  = /var/log/nginx/domains/*
+banTime  = 3600
+findtime = 50
+maxRetry = 3
