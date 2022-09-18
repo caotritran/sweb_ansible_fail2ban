@@ -1,0 +1,26 @@
+#unban IP 
+fail2ban-client set JAILNAMEHERE unbanip IPADDRESSHERE
+
+#integrate with fail2ban client cli 
+```
+fail2ban-client -i
+[root@TDA3 ~]# fail2ban-client -i
+Fail2Ban v0.11.2 reads log file that contains password failure report
+and bans the corresponding IP addresses using firewall rules.
+
+fail2ban> status
+Status
+|- Number of jail:	2
+`- Jail list:	wordpress-CF, wordpress-iptables
+fail2ban> status wordpress-iptables
+Status for the jail: wordpress-iptables
+|- Filter
+|  |- Currently failed:	121
+|  |- Total failed:	16748
+|  `- File list:	/var/log/nginx/abc.log
+`- Actions
+   |- Currently banned:	1
+   |- Total banned:	16
+   `- Banned IP list:	x.y.z.a
+fail2ban> 
+```
